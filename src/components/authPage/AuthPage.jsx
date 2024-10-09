@@ -1,4 +1,3 @@
-
 // import React, { useState, useEffect } from 'react';
 // import axios from 'axios';
 // import { useNavigate } from 'react-router-dom';
@@ -6,25 +5,34 @@
 // import { ToastContainer, toast } from 'react-toastify';
 // import 'react-toastify/dist/ReactToastify.css';
 
-// const AuthPage = ({ errorMessage }) => {
+// const AuthPage = () => {
 //   const [authState, setAuthState] = useState('loggedOut');
 //   const navigate = useNavigate();
 
 //   useEffect(() => {
-//     const user = localStorage.getItem('user');
-//     if (user) {
-//       setAuthState('loggedIn');
+//     const token = localStorage.getItem('token');
+//     if (token) {
+      
+//       axios.get('http://localhost:3000/auth/verify', { headers: { Authorization: `Bearer ${token}` } })
+//         .then(() => {
+//           setAuthState('loggedIn');
+//           navigate('/home');
+//         })
+//         .catch(() => {
+//           setAuthState('loggedOut');
+//           localStorage.removeItem('token'); 
+//         });
 //     } else {
 //       setAuthState('loggedOut');
 //     }
-//   }, []);
+//   }, [navigate]);
 
 //   const handleAuthAction = async (action, credentials) => {
-//      {
+//     try {
 //       if (action === 'login') {
 //         const response = await axios.post('http://localhost:3000/auth/login', credentials);
-//         const { user } = response.data;
-//         localStorage.setItem('user', JSON.stringify(user));
+//         const { token } = response.data; 
+//         localStorage.setItem('token', token); 
 
 //         setAuthState('loggedIn');
 //         toast.success('Login successful!');
@@ -33,17 +41,14 @@
 //         await axios.post('http://localhost:3000/auth/register', credentials);
 //         toast.success('Registration successful! Please login.');
 //         setAuthState('loggedOut'); 
-        
 //       } 
-//     } 
-     
-      
-    
+//     } catch (error) {
+//       toast.error('Authentication failed. Please try again.'); 
+//     }
 //   };
 
 //   return (
 //     <div className="App">
-//       {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
 //       <ToastContainer />
 //       <AuthForm onSubmit={handleAuthAction} />
 //     </div>

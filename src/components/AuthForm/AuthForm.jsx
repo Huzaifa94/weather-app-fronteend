@@ -1,7 +1,7 @@
 // import React, { useState } from 'react';
 // import { Transition } from '@headlessui/react';
 
-// const AuthForm = ({  onSubmit,errorMessage }) => {
+// const AuthForm = ({ onSubmit }) => {
 //   const [authType, setAuthType] = useState('login');
 //   const [formData, setFormData] = useState({
 //     username: '',
@@ -28,7 +28,7 @@
 //       }
 //       setFormData({ username: '', email: '', password: '' });
 //     } catch (error) {
-//       setError('Authentication failed. Please try again.');
+//       setError('Authentication failed. Please try again.'); 
 //     } finally {
 //       setLoading(false);
 //     }
@@ -39,9 +39,7 @@
 //       <div className="w-full max-w-5xl bg-white shadow-lg rounded-lg overflow-hidden flex">
 //         {/* Login Section */}
 //         <div
-//           className={`w-1/2 px-9 py-12 text-white transition-opacity duration-500 ${
-//             authType === 'login' ? 'opacity-100' : 'opacity-50'
-//           }`}
+//           className={`w-1/2 px-9 py-12 text-white transition-opacity duration-500 ${authType === 'login' ? 'opacity-100' : 'opacity-50'}`}
 //           style={{ backgroundColor: '#4C51BF' }}
 //         >
 //           <Transition
@@ -87,9 +85,7 @@
 
 //                 <button
 //                   type="submit"
-//                   className={`w-full bg-indigo-600 text-white text-lg font-semibold py-3 rounded-lg hover:bg-indigo-700 transition ${
-//                     loading ? 'opacity-50 cursor-not-allowed' : ''
-//                   }`}
+//                   className={`w-full bg-indigo-600 text-white text-lg font-semibold py-3 rounded-lg hover:bg-indigo-700 transition ${loading ? 'opacity-50 cursor-not-allowed' : ''}`}
 //                   disabled={loading}
 //                 >
 //                   {loading ? 'Loading...' : 'Login'}
@@ -109,16 +105,10 @@
 //             </div>
 //           </Transition>
 //         </div>
-//         <div>
-//       {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
-    
-//     </div>
 
 //         {/* Signup Section */}
 //         <div
-//           className={`w-1/2 p-12 transition-opacity duration-500 ${
-//             authType === 'signup' ? 'opacity-100' : 'opacity-50'
-//           }`}
+//           className={`w-1/2 p-12 transition-opacity duration-500 ${authType === 'signup' ? 'opacity-100' : 'opacity-50'}`}
 //           style={{ backgroundColor: '#319795' }}
 //         >
 //           <Transition
@@ -177,9 +167,7 @@
 
 //                 <button
 //                   type="submit"
-//                   className={`w-full bg-teal-500 text-white text-lg font-semibold py-3 rounded-lg hover:bg-teal-600 transition ${
-//                     loading ? 'opacity-50 cursor-not-allowed' : ''
-//                   }`}
+//                   className={`w-full bg-teal-600 text-white text-lg font-semibold py-3 rounded-lg hover:bg-teal-700 transition ${loading ? 'opacity-50 cursor-not-allowed' : ''}`}
 //                   disabled={loading}
 //                 >
 //                   {loading ? 'Loading...' : 'Sign Up'}
@@ -192,19 +180,14 @@
 //                     onClick={() => setAuthType('login')}
 //                     className="text-lg font-semibold text-teal-200 hover:underline mt-2"
 //                   >
-//                     Login
+//                     Log In
 //                   </button>
-                  
 //                 </div>
-               
 //               </form>
 //             </div>
 //           </Transition>
 //         </div>
-        
-     
 //       </div>
-      
 //     </div>
 //   );
 // };
