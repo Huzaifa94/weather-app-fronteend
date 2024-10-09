@@ -85,7 +85,8 @@ const Homepage = () => {
         onLocationUpdate={handleLocationUpdate}
       />
 
-      <main className="container mx-auto pl-6 pr-6 ">
+<main className="container mx-auto" style={{ paddingLeft: '6rem', paddingRight: '6rem' }}>
+
         <div className="grid grid-cols-1 gap-5 lg:grid-cols-3">
 
 
