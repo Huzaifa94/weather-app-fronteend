@@ -17,16 +17,23 @@ const Homepage = () => {
   
   const { theme } = useContext(ThemeContext);
 
- 
   const fetchWeatherData = async (placeId) => {
     try {
-      const response = await axios.get(
-        `https://www.meteosource.com/api/v1/free/point?place_id=${placeId}&sections=all&timezone=UTC&language=en&units=metric&key=ox8mwzpsjb55g1l5e15rspu6dlcst0malu27cn6y`
-      );
 
+      const response = await axios.get(
+        `https://www.meteosource.com/api/v1/free/point`, 
+        {
+          params: {
+            place_id: placeId,
+            sections: "all",
+            timezone: "UTC",
+            language: "en",
+            units: "metric",
+            key: "ox8mwzpsjb55g1l5e15rspu6dlcst0malu27cn6y",
+          },
+        }
+      );
       const data = response.data;
-      
-     console.log(data);
      
       setCurrentWeather(data.current);
       setWeeklyData(data.daily?.data?.slice(1, 6) || []); 
@@ -79,7 +86,7 @@ const Homepage = () => {
       />
 
       <main className="container mx-auto p-2">
-        <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-5 lg:grid-cols-3">
 
 
 
@@ -101,10 +108,10 @@ const Homepage = () => {
           {/* Hourly Forecast Card */}
           <div
             className={`bg-white ${
-              theme === "dark" ? "dark:bg-gray-800" : "bg-gray-100"
+              theme === "dark" ? "dark:bg-gray-800 bg-slate-500" : "bg-gray-100"
             } rounded-lg shadow-sm p-3 lg:col-span-2`}
           >
-            <h2 className="text-3xl font-bold text-gray-800 dark:text-gray-200 mb-4">
+            <h2 className="text-xl font-bold text-gray-800 dark:text-gray-200 mb-4">
               Hourly Forecast
             </h2>
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
@@ -126,10 +133,10 @@ const Homepage = () => {
           {/* Weekly Forecast Card */}
           <div
             className={`bg-white ${
-              theme === "dark" ? "dark:bg-gray-800" : "bg-gray-100"
+              theme === "dark" ? "dark:bg-gray-800 bg-slate-500"  : "bg-gray-100"
             } rounded-lg shadow-lg p-2 lg:col-span-3`}
           >
-            <h2 className="text-3xl font-bold text-gray-800 dark:text-gray-200 mb-2">
+            <h2 className="text-xl font-bold text-gray-800 dark:text-gray-200 mb-2">
               5 Days Forecast
             </h2>
             <div className="grid grid-cols-5 gap-4 mb-2">
@@ -151,10 +158,10 @@ const Homepage = () => {
             {/* Temperature Chart */}
             <div
               className={`bg-white ${
-                theme === "dark" ? "dark:bg-gray-800" : "bg-gray-100"
+                theme === "dark" ? "dark:bg-gray-800 bg-slate-500" : "bg-gray-100"
               } rounded-lg shadow-lg p-2`}
             >
-              <h2 className="text-xl font-bold text-gray-800 dark:text-gray-200 mb-4">
+              <h2 className="text-xl font-bold text-gray-800 dark:text-gray-200 mb-2">
                 Temperature Trend
               </h2>
               <TemperatureTrendChart forecastData={weeklyData} />
